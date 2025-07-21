@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jane Otaniel - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #9c27b0;
+      --primary-dark: #7b1fa2;
+      --primary-light: #e1bee7;
+      --accent-color: #ff9800;
+      --dark-bg: #4a0457;
+      --card-bg: #241a24;
+      --text-light: #f5f5f5;
+      --text-muted: #bdbdbd;
+    }
+    
+    body {
+      background: var(--dark-bg);
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(50,0,60,0.85) 100%), 
+                    url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(159, 22, 174, 0.2);
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+      transform: scale(1.05);
+      border-color: var(--accent-color);
+    }
+    
+    .typing {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: white;
+      margin: 20px 0;
+      min-height: 60px;
+    }
+    
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 40px;
+      font-weight: 700;
+      color: var(--primary-light);
+      font-size: 2rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      margin-bottom: 20px;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+    
+    .card-body {
+      padding: 25px;
+    }
+    
+    .card-title {
+      color: var(--primary-light);
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .card-text {
+      color: var(--text-light) !important;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    footer {
+      background: #0a0a0a;
+      padding: 25px 0;
+      text-align: center;
+    }
+    
+    .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      margin: 0 8px;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .btn-purple {
+      color: white;
+      background-color: var(--primary-color);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 0.95rem;
+    }
+    
+    .btn-purple:hover,
+    .btn-purple:focus {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+    
+    .social-links {
+      margin-top: 25px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin: 0 8px;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+      color: white;
+      text-decoration: none;
+    }
+    
+    .skill-badge {
+      display: inline-block;
+      background: rgba(144, 6, 190, 0.2);
+      color: var(--primary-light);
+      padding: 6px 15px;
+      border-radius: 50px;
+      margin: 4px;
+      font-size: 0.85rem;
+      border: 1px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-badge:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    form input,
+    form textarea {
+      background: var(--card-bg);
+      border: 1px solid #333;
+      color: white;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    
+    form input:focus,
+    form textarea:focus {
+      background: var(--card-bg);
+      color: white;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(156, 39, 176, 0.25);
+    }
+    
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 15px;
+        min-height: 90vh;
+      }
+      
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .typing {
+        font-size: 1.2rem;
+        min-height: 50px;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+      
+      .card-body {
+        padding: 20px;
+      }
+      
+      .card-title {
+        font-size: 1.2rem;
+      }
+      
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        margin: 0 5px;
+      }
+      
+      .btn-purple {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+      
+      .nav-link {
+        margin: 0 5px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 80px 15px;
+      }
+      
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .typing {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .skill-badge {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="container">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQGSRXXbccgIsA/profile-displayphoto-crop_800_800/B4DZeq3KMgGUAM-/0/1750918279223?e=1755734400&v=beta&t=BL_DAsOYiYPooz31aYlVepQFC0WfTXB5RgQyamh1rBQ" 
+           alt="Jane Otaniel" class="profile-pic fade-in">
+      <h1 class="mt-3 fade-in delay-1">Hi, I'm <span style="color: var(--accent-color)">Jane Otaniel</span></h1>
+      <p class="typing fade-in delay-2">IT Student | Developer | Tech Enthusiast</p>
+      
+      <div class="social-links fade-in delay-3">
+        <a href="https://github.com/it-dev-coder-21" class="social-link" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/Jane Otaniel" class="social-link" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:your.email@example.com" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      
+      <a href="#about" class="btn btn-purple mt-4 fade-in delay-3">
+        <i class="fas fa-arrow-down me-2"></i>Learn More
+      </a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="text-center section-title">About Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead text-center mb-5">I'm an IT student passionate about building elegant, efficient software and exploring the world of open-source and network technologies. With a strong foundation in C++, Java, and web technologies, I enjoy solving problems and collaborating on meaningful projects.</p>
+          
+          <div class="row text-center">
+            <div class="col-md-4 mb-4">
+              <div class="p-4">
+                <i class="fas fa-code fa-3x mb-3" style="color: var(--primary-color)"></i>
+                <h4>Clean Code</h4>
+                <p>I write maintainable, efficient code following best practices and design patterns.</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="p-4">
+                <i class="fas fa-lightbulb fa-3x mb-3" style="color: var(--primary-color)"></i>
+                <h4>Problem Solver</h4>
+                <p>I thrive on tackling complex problems and finding innovative solutions.</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="p-4">
+                <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-color)"></i>
+                <h4>Team Player</h4>
+                <p>I enjoy collaborating with others to build something greater than the sum of its parts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-dark">
+    <div class="container">
+      <h2 class="text-center section-title">My Projects</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">AmazingGrace FoodShop</h5>
+              <p class="card-text">A responsive website showcasing AmazingGrace FoodShop's menu, location, and services with online ordering functionality.</p>
+              <div class="mt-3">
+                
+              </div>
+              <a href="https://it-dev-coder-21.github.io/Amazing-Grace-FoodShop/" class="btn btn-purple mt-3">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Networked Chat App</h5>
+              <p class="card-text">Real-time LAN chat system using sockets in C++ for secure group communication with message encryption.</p>
+              <div class="mt-3">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Portfolio Website</h5>
+              <p class="card-text">A modern personal portfolio site with responsive design, animations, and project showcase.</p>
+              <div class="mt-3">
+                
+              </div>
+              <a href="https://it-dev-coder-21.github.io/jane-portfolio/" class="btn btn-purple mt-3" target="_blank">View Live</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="text-center section-title">My Skills</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="mb-5">
+            <span class="skill-badge">HTML</span>
+            <span class="skill-badge">CSS</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Bootstrap5</span>
+            <span class="skill-badge">C++</span>
+            <span class="skill-badge">Networking</span>
+            <span class="skill-badge">Graphic Designing</span>
+            <span class="skill-badge">Problem Solving</span>
+          </div>
+          
+          <div class="mt-5">
+            <h4 class="mb-4">Insipired to Learn</h4>
+            <span class="skill-badge">React</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">Cloud Computing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-dark">
+    <div class="container">
+      <h2 class="text-center section-title">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-purple btn-lg">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+            </div>
+          </form>
+          
+          <div class="text-center mt-5">
+            <h4 class="mb-3">Or connect with me on</h4>
+            <div>
+              <a href="https://github.com/yourusername" class="social-link mx-2" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/in/yourprofile" class="social-link mx-2" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:your.email@example.com" class="social-link mx-2">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="mb-3">&copy; 2025 Jane Otaniel. All rights reserved.</p>
+      <a href="#home" class="btn btn-outline-light btn-sm mt-3">
+        <i class="fas fa-arrow-up me-1"></i> Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Typing effect
+    const typingEl = document.querySelector(".typing");
+    const phrases = ["IT Student", "Full Stack Developer", "Tech Enthusiast", "Problem Solver", "Lifelong Learner"];
+    let current = 0, letter = 0, isDeleting = false;
+    
+    function type() {
+      const currentText = phrases[current];
+      
+      if (isDeleting) {
+        typingEl.textContent = currentText.slice(0, --letter);
+      } else {
+        typingEl.textContent = currentText.slice(0, ++letter);
+      }
+      
+      if (!isDeleting && letter === currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 1500);
+      } else if (isDeleting && letter === 0) {
+        isDeleting = false;
+        current = (current + 1) % phrases.length;
+        setTimeout(type, 500);
+      } else {
+        const speed = isDeleting ? 75 : 150;
+        setTimeout(type, speed);
+      }
+    }
+    
+    // Start typing effect after 1 second
+    setTimeout(type, 1000);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Add fade-in animation when scrolling
+    const fadeElements = document.querySelectorAll('.card, .section-title, .skill-badge');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('fade-in');
+        }
+      });
+    };
+    
+    // Run once on page load
+    fadeInOnScroll();
+    
+    // Run on scroll
+    window.addEventListener('scroll', fadeInOnScroll);
+  </script>
+</body>
+</html>
