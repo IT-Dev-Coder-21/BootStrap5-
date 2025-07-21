@@ -4,7 +4,7 @@ This is a modern, responsive personal portfolio website for Jane Otaniel, showca
 
 ## Live Demo
 
-View Live Portfolio https/github.com/IT-Dev-Coder-21/BootStrap5-
+View Live Portfolio https://it-dev-coder-21.github.io/BootStrap5-/
 ## Features
 
 - Responsive design: Optimized for desktop, tablet, and mobile devices using Bootstrap 5.
